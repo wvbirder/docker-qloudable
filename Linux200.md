@@ -117,14 +117,14 @@ This docker command will create a container based on the database image file loc
     - "-v" This maps the directory where you downloaded the AlphaOfficeSetup GIT
     repository to the /dbfiles directory within the container  
 
-- **Type OR cut and paste** (all on one line) the following; substituting your path "**\<YOUR-HOME>**" where you download the AlphaofficeSetup GIT repository. For Example: `/YOUR-HOME/AlphaOfficeSetup` might change to this `~/AlphaOfficeSetup`, if you loaded the git repository in your home directory.
+- **Type OR cut and paste** the following.  If you downloaded the AlphaOfficeSetup GIT files to a directory other than /home/opc/ then ***Substitute*** your directory name. For Example: `/home/opc/AlphaOfficeSetup` might change to this `~/AlphaOfficeSetup`, if you loaded the GIT repository in your home directory.
 
 ```
-docker run -d -it --name orcl -h='oracledb-ao' -p=1521:1521 -p=5600:5600 -v /<YOUR-HOME>/AlphaOfficeSetup:/dbfiles wvbirder/database-enterprise:12.2.0.1-slim
+docker run -d -it --name orcl -h='oracledb-ao' -p=1521:1521 -p=5600:5600 -v /home/opc/AlphaOfficeSetup:/dbfiles wvbirder/database-enterprise:12.2.0.1-slim
 ```
 
 Example:
-docker `run -d -it --name orcl -h='oracledb-ao' -p=1521:1521 -p=5600:5600 -v /home/holuser/AlphaOfficeSetup:/dbfiles wvbirder/database-enterprise:12.2.0.1-slim`
+docker `run -d -it --name orcl -h='oracledb-ao' -p=1521:1521 -p=5600:5600 -v /home/opc/AlphaOfficeSetup:/dbfiles wvbirder/database-enterprise:12.2.0.1-slim`
 
 ***If you make a mistake with the volume path to where you downloaded the AlphaOfficeSetup files you can stop and remove the container once it's created and try again using the following commands***
 
@@ -223,23 +223,31 @@ HTTP access as been defined on port 5600.
 
 - **NOTE:** If you want to login to Enterprise Manager Express the browser needs the Shockwave add-on installed. Install this into your browser environment by going to the adobe webite and downloading the player from: [Shockwave](https://get.adobe.com/shockwave/)
 
-- **If you are using the workshop VirtualBox VM Shockwave has already been installed and you will only have to enable it.**
+- We need the Public IP address to test the deployment. Navigate in a browser to your Oracle Trial account and from the hamburger menu in the upper left hand side of the page select go to **Compute-->Instances**:
 
-- In your browser **enter**:
+  ![](images/100Linux/26.png)
+
+- Click on the **Docker** instance link
+
+  ![](images/100Linux/Picture100-5-4.png)
+
+- Note the Public IP address (In this example, `129.213.119.105`
+
+  ![](images/100Linux/Picture100-5-6.png)
+
+- In your browser **enter** (Substituting you Public IP address):
 
 ```
-http://localhost:5600/em
+http://<Public-IP>:5600/em
 ```
-
-![](images/200Linux/Picture200-12.6.png)
 
 - You may get prompted to enable Adobe Flash. Click the link to do so.
 
-![](images/200Win/Picture200-12.8.png)
+  ![](images/200Linux/Picture200-12.8.png)
 
-![](images/200Linux/Picture200-13.png)
+  ![](images/200Linux/Picture200-13.png)
 
-**Enter** the following:
+- **Enter** the following:
 
 ```
 Username: sys
@@ -267,13 +275,13 @@ This docker command will create a container based on the latest MYSQL database i
     - "-v" This maps the directory where you downloaded the AlphaOfficeSetup GIT
     repository to the /dbfiles directory within the container 
     
-- **Type OR cut and paste** the following, but ***Substitute*** the **YOUR-HOME** place holder with the directory name where you loaded the AlphaofficeSetup GIT repository. For Example: `/YOUR-HOME/AlphaOfficeSetup` might change to this `~/AlphaOfficeSetup`, if you loaded the git repository in your home directory.
+- **Type OR cut and paste** the following.  If you downloaded the AlphaOfficeSetup GIT files to a directory other than /home/opc/ then ***Substitute*** your directory name. For Example: `/home/opc/AlphaOfficeSetup` might change to this `~/AlphaOfficeSetup`, if you loaded the GIT repository in your home directory.
 
 ```
-docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /<YOUR-HOME>/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql
+docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /home/opc/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql
 ```
 
-- Example: `docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /home/holuser/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql`
+- Example: `docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /home/opc/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql`
 
 - This sets up a default MYSQL database using the "root" database users password as "Alpha2017_"
 

@@ -108,7 +108,15 @@ docker ps
 
 ![](images/100Linux/26.png)
 
-- Go to this URL substituting your IP address
+- Click on the **Docker** instance link
+
+![](images/100Linux/Picture100-5-4.png)
+
+- Note the Public IP address (In this example, `129.213.119.105`
+
+![](images/100Linux/Picture100-5-6.png)
+
+- Go to this URL substituting your Public IP address
 
 ```
 http://<Public-IP>:8002/

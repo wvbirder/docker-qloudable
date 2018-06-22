@@ -161,7 +161,7 @@ A security list provides a virtual firewall for an instance, with ingress and eg
 
     ![](images/050Linux/18.PNG)
 
-For the purposes of the upcoming Docker deployments we need to add three Ingress Rules that allow access from the Internet to ports 9080, 8002, 18002, and 8085. In the production environment only the UI port (8085) would typically be opened for access but the labs will have us test the various other Docker container functionallity as we go, thus the need to open other ports.
+For the purposes of the upcoming Docker deployments we need to add three Ingress Rules that allow access from the Internet to ports 9080, 8002, 18002, 5600, and 8085. In a production environment only the UI port (8085) would typically be opened for access but the labs will have us test various other Application and Oracle centric functionality as we go, thus the need to open other ports.
 
 - Click **Edit All Rules** and then select **+Add Rule**
 
@@ -178,7 +178,7 @@ Source CIDR: 0.0.0.0/0
 Destination Port Range: 8085 
 ```
 
-- **Add three more Ingress Rules**
+- **Add four more Ingress Rules**
 
 ```
 Source CIDR: 0.0.0.0/0
@@ -193,6 +193,11 @@ Destination Port Range: 8002
 ```
 Source CIDR: 0.0.0.0/0
 Destination Port Range: 18002 
+```
+
+```
+Source CIDR: 0.0.0.0/0
+Destination Port Range: 5600 
 ```
 
 - When completed your rules should look like:
@@ -374,5 +379,17 @@ git --version
 - If the following commands run without error as the `opc` user then you are ready to proceed to Lab 100.
 
    ![](images/050Linux/41.PNG)
+
+### **STEP 10**: Edit /etc/sysconfig/selinux
+
+To ensure that permissive mode survives re-boots please edit /etc/sysconfig/selinux
+
+- Using vi change the SELINUX line to **permissive**. **Type** the following:
+
+```
+vi /etc/sysconfig/selinux
+```
+
+   ![](images/050Linux/42.png)
 
 **This completes the Set Up!**
