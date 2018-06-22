@@ -113,7 +113,7 @@ Compartments are used to isolate resources within your OCI tenant. User-based ac
 
   - In a moment, your new Compartment will show up in the list. We will use it next to create components in.
 
-    ![](images/050Linux/9.png)
+    ![](images/050Linux/9.PNG)
 
 ### **STEP 4**: Create a Virtual Compute Network
 
