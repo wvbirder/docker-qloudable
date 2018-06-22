@@ -298,6 +298,8 @@ The last set up piece will be to SSH into the Compute image and install Docker.
 opc
 ```
 
+- Screenshot:
+
   ![](images/050Linux/32.PNG)
 
 - Select **SSH-->Auth** and browse to the Private Key you created back in Step 7:
@@ -322,7 +324,9 @@ chmod 600 dockerkey
 ssh -i ./dockerkey opc@129.213.119.105
 ```
 
-![](images/050Linux/37.PNG)
+- Linux / Mac screenshot:
+
+  ![](images/050Linux/37.PNG)
 
 ### **STEP 9**: Install and configure Docker and GIT
 
