@@ -278,10 +278,10 @@ This docker command will create a container based on the latest MYSQL database i
 - **Type OR cut and paste** the following.  If you downloaded the AlphaOfficeSetup GIT files to a directory other than /home/opc/ then ***Substitute*** your directory name. For Example: `/home/opc/AlphaOfficeSetup` might change to this `~/AlphaOfficeSetup`, if you loaded the GIT repository in your home directory.
 
 ```
-docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /home/opc/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql
+docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /home/opc/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql:5.7
 ```
 
-- Example: `docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /home/opc/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql`
+- Example: `docker run -d -it --name mysql -h='mysqldb-ao' -p=3306:3306 -v /home/opc/AlphaOfficeSetup:/dbfiles --env="MYSQL_ROOT_PASSWORD=Alpha2017_" mysql:5.7`
 
 - This sets up a default MYSQL database using the "root" database users password as "Alpha2017_"
 
