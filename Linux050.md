@@ -3,7 +3,7 @@
 
 ![](images/050Linux/Title050.png) 
 
-Updated: January 24, 2018
+Updated: June 21, 2018
 
 ## Overview
 
@@ -26,58 +26,192 @@ Whereas, Containers include the application, all of its dependencies, but share 
 **Note:** At this time, Windows and Linux containers require that they run on their respective kernel base, therefore, Windows containers cannot run on Linux hosts and vice versa.
 
 ## Introduction
-In this lab we introduce some basic concepts of Docker, container architectures and functions.  We will do this using a single container which provides a REST service as part of a node.js application.  The application has two pieces, which provide a microservice.
-
-- Datasource: a simple JSON file included in the container
-- REST Client: To serve up data from the datasource
-
-You will use various Docker commands to setup, run and connect into containers. In this introduction you will explore concepts of Docker volumes, networking and container architecture.
+In this lab we will obtain an Oracle Cloud Trial Account, create ssh key pairs, login into your Trial, create a VCN (Virtual Compute Network) and Compartment, create a new compute instance and finally install docker into the instance.
 
 ***To log issues***, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 
 ## Objectives
 
-- Deploy and test a simple Docker container running a simple application
-- Introduce and use the Docker Hub registry
-- Familiarize yourself with Docker commands (ps, run, exec)
-- Understand foundational concepts of container networking and filesystem mapping
+- Obtain an Oracle Cloud Trial Account
+- Create a SSH key pair
+- Create the baseline infrastructure to support a Compute instance
+- SSH into the instance: Install Docker and GIT
 
 
 ## Required Artifacts
 
-- Docker Hub Account: [Docker Hub](https://hub.docker.com/)
-- Docker and GIT installed in your own Linux environment (this guide is tailored to Linux) you can decide if you want to run locally or, you can use an available Linux based VirtualBox image
+- If running from Windows: [Putty and PuttyGen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-# Start up and login into your Linux environment
+# Get a Trial Account and Create Infrastructure
 
-If you chose to use your own Linux installation then login and verify that the Docker engine is up and running. 
+You will create all required infrastructure components within your Trail account.
 
-**NOTE**: The screen shots in this lab guide are using the available Linux VirtualBox VM
+## Obtain a Trial Account
 
-## Verify Docker Installation
+### **Step 1**: Acquire an Oracle Cloud Trial Account
 
-### **STEP 1**: Open up a Terminal Window
+- If you do not have a trial account please click on this URL [cloud.oracle.com/tryit](http://cloud.oracle.com/tryit&intcmp=DeveloperInnovation-HOL-11NOV17), and complete all the required steps to get your free Oracle Cloud Trial Account.
 
-- Right-click and open up a terminal session.
+- You will eventually receive the following email after your account has been provisioned:
 
-![](images/050Linux/Picture050-1.png)
+![](images/050Linux/code_9.png)
 
-### **STEP 2**: Verify that Docker is running
 
-- **Type** the following:
+### **STEP 2**: Log in to your OCI dashboard
+
+- **You must wait until you receive this email above** indicating that your Cloud Account has been provisioned. _Please note that this email may arrive in your spam or promotions folder pending your email settings._
+
+- Once you receive the **Get Started with Oracle Cloud** Email, make note of your **Username, Password and Cloud Account Name**.
+
+  ![](images/050Linux/0.1.png)
+
+- From any browser go to. :
+
+    [https://cloud.oracle.com/en_US/sign-in](https://cloud.oracle.com/en_US/sign-in)
+
+- Enter your **Cloud Account Name** in the input field and click the **My Services** button. If you have a trial account, this can be found in your welcome email. Otherwise, this will be supplied by your workshop instructor.
+
+  ![](images/050Linux/1.png)
+
+- Enter your **Username** and **Password** in the input fields and click **Sign In**.
+
+  ![](images/050Linux/2.png)
+
+**NOTE**: You may (probably) will be prompted to change the temporary password listed in the welcome email. In that case, enter the new password in the password field.
+
+- In the top left corner of the dashboard, click the **hamburger menu**
+
+  ![](images/050Linux/3.png)
+
+- Click to expand the **Services** submenu, then click **Compute**
+
+  ![](images/050Linux/4.png)
+
+- On the OCI Console sign in page, enter the same **Username** as you did on the previous sign in page. If this is your first time logging into the OCI Console, enter the **temporary password** from your trial account welcome email. If you have already visited the OCI Console and changed your password, enter your **new password**.
+
+  ![](images/050Linux/5.png)
+
+### **STEP 3**: Create a Compartment
+
+Compartments are used to isolate resources within your OCI tenant. User-based access policies can be applied to manage access to compute instances and other resources within a Compartment.
+
+- Click the **hamburger icon** in the upper left corner to open the navigation menu. Under the **Identity** section of the menu, click **Compartments**
+
+  ![](images/050Linux/69.png)
+
+  ![](images/050Linux/70.png)
+
+  - Click **Create Compartment**
+
+    ![](images/050Linux/7.png)
+
+  - In the **Name** field, enter `Demo`. Enter a **Description** of your choice. Click **Create Compartment**.
+
+    ![](images/050Linux/8.png)
+
+    ![](images/050Linux/8-2.png)
+
+  - In a moment, your new Compartment will show up in the list. We will use it next to create components in.
+
+    ![](images/050Linux/9.png)
+
+### **STEP 4**: Create a Virtual Compute Network
+
+We need a default VCN to define our networking within the Demo compartment. This is where Subnets and Security Lists, to name a couple get defined for each Availablity Domains in your Tenancy. Oracle Cloud Infrastructure is hosted in regions and availability domains. A region is a localized geographic area, and an availability domain is one or more data centers located within a region. A region is composed of several availability domains. Availability domains are isolated from each other, fault tolerant, and very unlikely to fail simultaneously. Because availability domains do not share infrastructure such as power or cooling, or the internal availability domain network, a failure at one availability domain is unlikely to impact the availability of the others.
+
+All the availability domains in a region are connected to each other by a low latency, high bandwidth network, which makes it possible for you to provide high-availability connectivity to the Internet and customer premises, and to build replicated systems in multiple availability domains for both high-availability and disaster recovery.
+
+- Click the **hamburger icon** in the upper left corner to open the navigation menu. Under the **Network** section of the menu, click **Virtual Cloud Networks**
+
+    ![](images/050Linux/10.png)
+
+- Click **Create Virtual Cloud Network**
+
+    ![](images/050Linux/11.png)
+
+- Fill in the follow values as highlighted below:
+
+    **NOTE:** Make sure to de-select the "USE DNS HOSTNAMES IN THIS VCN" checkbox)
+
+    ![](images/050Linux/12.png)
+
+    ![](images/050Linux/13.png)
+
+- Click **Create Virtual Cloud Network**
+
+- Click **Close** on the details page:
+
+    ![](images/050Linux/14.png)
+
+- You will see:
+
+    ![](images/050Linux/15.png)
+
+### **STEP 5**: Add a Security List entry
+
+A security list provides a virtual firewall for an instance, with ingress and egress rules that specify the types of traffic allowed in and out. Each security list is enforced at the instance level. However, you configure your security lists at the subnet level, which means that all instances in a given subnet are subject to the same set of rules. The security lists apply to a given instance whether it's talking with another instance in the VCN or a host outside the VCN.
+
+- Click on the **DeickerVCN** and then **Security Lists**
+
+    ![](images/050Linux/16.png)
+
+    ![](images/050Linux/17.png)
+
+- Click on **Default Security List for DockerVCN**
+
+    ![](images/050Linux/18.png)
+
+For the purposes of the upcoming Docker deployments we need to add three Ingress Rules that allow access from the Internet to ports 9080, 8002, and 8085. In the production environment only the UI port (8085) would typically be opened for access but the labs will have us test the various other Docker container functionallity as we go, thus the need to open three ports.
+
+- Click **Edit All Rules** and then select **+Add Rule**
+
+    ![](images/050Linux/19.png)
+
+    ![](images/050Linux/20.png)
+
+- **Enter the following**
+
+**NOTE:** Leave all other values at default
 
 ```
- cd
- docker version
+Source CIDR: 0.0.0.0/0
+Destination Port Range: 8085 
 ```
 
-The information on your docker engine should be displayed:
+- **Add two more Ingress Rules**
 
-![](images/050Linux/Picture100-2.png)
+```
+Source CIDR: 0.0.0.0/0
+Destination Port Range: 8085 
+```
 
-### **STEP 3**: See What is running
+```
+Source CIDR: 0.0.0.0/0
+Destination Port Range: 8085 
+```
 
-Let's take a quick look at what is running in the docker engine, if this is a new environment, you should see no docker containers running.
+- When completed your rules should look like:
+
+    ![](images/050Linux/21.png)
+
+- Click the **Save Secutiry List Rules** button
+
+    ![](images/050Linux/22.png)
+
+- Your Ingress Rules should look like:
+
+    ![](images/050Linux/23.png)
+
+### **STEP 6**: Create SSH Key Pair (Linux client)
+
+Before we create the Compute instance that will contian Docker and application depoyments we need to create an ssh key pair so we'll be able to securly connect to the instance and do the Docker installation, etc.
+
+**NOTE:** `This step focuses on key pair generation for Linux based terminal sessions. If your going to run your terminal sessions from a Windows client then skip to STEP 7`
+
+- In the terminal window **Type** the following
+
+
+
 
 - **Type** the following:
 
