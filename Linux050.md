@@ -161,7 +161,7 @@ A security list provides a virtual firewall for an instance, with ingress and eg
 
     ![](images/050Linux/18.PNG)
 
-For the purposes of the upcoming Docker deployments we need to add three Ingress Rules that allow access from the Internet to ports 9080, 8002, and 8085. In the production environment only the UI port (8085) would typically be opened for access but the labs will have us test the various other Docker container functionallity as we go, thus the need to open three ports.
+For the purposes of the upcoming Docker deployments we need to add three Ingress Rules that allow access from the Internet to ports 9080, 8002, 18002, and 8085. In the production environment only the UI port (8085) would typically be opened for access but the labs will have us test the various other Docker container functionallity as we go, thus the need to open other ports.
 
 - Click **Edit All Rules** and then select **+Add Rule**
 
@@ -178,23 +178,28 @@ Source CIDR: 0.0.0.0/0
 Destination Port Range: 8085 
 ```
 
-- **Add two more Ingress Rules**
+- **Add three more Ingress Rules**
 
 ```
 Source CIDR: 0.0.0.0/0
-Destination Port Range: 8085 
+Destination Port Range: 9080 
 ```
 
 ```
 Source CIDR: 0.0.0.0/0
-Destination Port Range: 8085 
+Destination Port Range: 8002 
+```
+
+```
+Source CIDR: 0.0.0.0/0
+Destination Port Range: 18002 
 ```
 
 - When completed your rules should look like:
 
     ![](images/050Linux/21.PNG)
 
-- Click the **Save Secutiry List Rules** button
+- Click the **Save Security List Rules** button
 
     ![](images/050Linux/22.PNG)
 
