@@ -109,7 +109,7 @@ Compartments are used to isolate resources within your OCI tenant. User-based ac
 
     ![](images/050Linux/8.png)
 
-    ![](images/050Linux/8-2.png)
+    ![](images/050Linux/8-2.PNG)
 
   - In a moment, your new Compartment will show up in the list. We will use it next to create components in.
 
@@ -123,29 +123,29 @@ All the availability domains in a region are connected to each other by a low la
 
 - Click the **hamburger icon** in the upper left corner to open the navigation menu. Under the **Network** section of the menu, click **Virtual Cloud Networks**
 
-    ![](images/050Linux/10.png)
+    ![](images/050Linux/10.PNG)
 
 - Click **Create Virtual Cloud Network**
 
-    ![](images/050Linux/11.png)
+    ![](images/050Linux/11.PNG)
 
 - Fill in the follow values as highlighted below:
 
     **NOTE:** Make sure to de-select the "USE DNS HOSTNAMES IN THIS VCN" checkbox)
 
-    ![](images/050Linux/12.png)
+    ![](images/050Linux/12.PNG)
 
-    ![](images/050Linux/13.png)
+    ![](images/050Linux/13.PNG)
 
 - Click **Create Virtual Cloud Network**
 
 - Click **Close** on the details page:
 
-    ![](images/050Linux/14.png)
+    ![](images/050Linux/14.PNG)
 
 - You will see:
 
-    ![](images/050Linux/15.png)
+    ![](images/050Linux/15.PNG)
 
 ### **STEP 5**: Add a Security List entry
 
@@ -153,21 +153,21 @@ A security list provides a virtual firewall for an instance, with ingress and eg
 
 - Click on the **DockerVCN** and then **Security Lists**
 
-    ![](images/050Linux/16.png)
+    ![](images/050Linux/16.PNG)
 
-    ![](images/050Linux/17.png)
+    ![](images/050Linux/17.PNG)
 
 - Click on **Default Security List for DockerVCN**
 
-    ![](images/050Linux/18.png)
+    ![](images/050Linux/18.PNG)
 
 For the purposes of the upcoming Docker deployments we need to add three Ingress Rules that allow access from the Internet to ports 9080, 8002, and 8085. In the production environment only the UI port (8085) would typically be opened for access but the labs will have us test the various other Docker container functionallity as we go, thus the need to open three ports.
 
 - Click **Edit All Rules** and then select **+Add Rule**
 
-    ![](images/050Linux/19.png)
+    ![](images/050Linux/19.PNG)
 
-    ![](images/050Linux/20.png)
+    ![](images/050Linux/20.PNG)
 
 - **Enter the following**
 
@@ -192,15 +192,15 @@ Destination Port Range: 8085
 
 - When completed your rules should look like:
 
-    ![](images/050Linux/21.png)
+    ![](images/050Linux/21.PNG)
 
 - Click the **Save Secutiry List Rules** button
 
-    ![](images/050Linux/22.png)
+    ![](images/050Linux/22.PNG)
 
 - Your Ingress Rules should look like:
 
-    ![](images/050Linux/23.png)
+    ![](images/050Linux/23.PNG)
 
 ### **STEP 6**: Create SSH Key Pair (Linux or Mac client)
 
@@ -216,7 +216,7 @@ ssh-keygen -b 2048 -t rsa -f dockerkey
 
 - Your key pair is now in the current directory
 
-    ![](images/050Linux/24.png)
+    ![](images/050Linux/24.PNG)
 
 ### **STEP 7**: Create SSH Key Pair (Windows client)
 
@@ -224,7 +224,7 @@ For Windows clients this example will show the use of PuttyGen to generate the k
 
 - Run **PuttyGen** and click **Generate**
 
-    ![](images/050Linux/25.png)
+    ![](images/050Linux/25.PNG)
 
 - **Save private key** to a directory of your choice.
 
@@ -232,11 +232,11 @@ For Windows clients this example will show the use of PuttyGen to generate the k
 
 - Instead, **Select the entire Public Key in the display and right-click copy**. `This content will be pasted into the Create Instance dialog in Step 8.`
 
-    ![](images/050Linux/25-2.png)
+    ![](images/050Linux/25-2.PNG)
 
 - **NOTE for Linux and Mac Clients:** Just open up the pubic key file in an editor (vi) and select / copy the entire contents to be used in Step 8.   
 
-    ![](images/050Linux/25-4.png)
+    ![](images/050Linux/25-4.PNG)
 
 ### **STEP 8**: Create a Compute Instance
 
@@ -244,11 +244,11 @@ You will now create a Linux based Compute instance using the public key you just
 
 - Go back to your OCI console and from the hamburger menu in the upper left hand corner select **Compute-->Instances**
 
-    ![](images/050Linux/26.png)
+    ![](images/050Linux/26.PNG)
 
 -Click **Create Instance**
 
-   ![](images/050Linux/27.png)
+   ![](images/050Linux/27.PNG)
 
 - **Select or Type** the following in the `Instance` section of the dialog:
 
@@ -265,7 +265,7 @@ SSH Keys: Choose SSH Key Files
 - You will Browse and select your PUBLIC SSH Key
 **NOTE:** You will paste the public key you copied in Step 7 into the SSH KEY field by selecting the "Paste SSH Keys" radio button. `The public key should all be on ONE LINE` 
 
-   ![](images/050Linux/28.png)
+   ![](images/050Linux/28.PNG)
 
 - In the Network Section **Select** the following:
 
@@ -273,7 +273,7 @@ SSH Keys: Choose SSH Key Files
 Virtual Cloud Network: DockerVCN
 ```
 
-   ![](images/050Linux/29.png)
+   ![](images/050Linux/29.PNG)
 
 - Click **Create Instance**
 
@@ -281,7 +281,7 @@ After a few minutes you should see a running instance with a Public IP Address.
 
 - `Make a note of the IP Address as we will be using this in the next step.`
 
-   ![](images/050Linux/30.png)
+   ![](images/050Linux/30.PNG)
 
 
 ### **STEP 8**: SSH into the Instance and install Docker
@@ -290,7 +290,7 @@ The last set up piece will be to SSH into the Compute image and install Docker.
 
 - For a Windows client session bring up Putty, select the **Session** section and type in the IP address:
 
-   ![](images/050Linux/31.png)
+   ![](images/050Linux/31.PNG)
 
 - Select the **Data** section and enter the following as the username:
 
@@ -298,19 +298,19 @@ The last set up piece will be to SSH into the Compute image and install Docker.
 opc
 ```
 
-   ![](images/050Linux/32.png)
+  ![](images/050Linux/32.PNG)
 
 - Select **SSH-->Auth** and browse to the Private Key you created back in Step 7:
 
-   ![](images/050Linux/33.png) 
+   ![](images/050Linux/33.PNG) 
 
 - Click the **Open** button. You will presented the first time with am alert message. Click **Yes**
 
-   ![](images/050Linux/35.png)
+   ![](images/050Linux/35.PNG)
 
 - You will logged into the Compute image:
 
-   ![](images/050Linux/36.png)
+   ![](images/050Linux/36.PNG)
 
 - **NOTE:** For Linux and Mac client sessions "cd" into the directory where your key pair is. Make sure the dockerkey file has the permissions of "600" (chmod 600 dockerkey) and ssh into the compute instance `substituting your IP address`.
 
@@ -322,7 +322,7 @@ chmod 600 dockerkey
 ssh -i ./dockerkey opc@129.213.119.105
 ```
 
-   ![](images/050Linux/37.png)
+![](images/050Linux/37.PNG)
 
 ### **STEP 9**: Install and configure Docker and GIT
 
@@ -339,9 +339,9 @@ systemctl start docker
 ```
 - Screenshot at the end of the Docker installation:
 
-   ![](images/050Linux/38.png)
+   ![](images/050Linux/38.PNG)
 
-   ![](images/050Linux/39.png)
+   ![](images/050Linux/39.PNG)
 
 - **Type** the following:
 
@@ -351,7 +351,7 @@ yum install git
 
 - Screenshot at the end of the GIT installation:
 
-   ![](images/050Linux/40.png)
+   ![](images/050Linux/40.PNG)
 
 - **Type** the following:
 
@@ -364,6 +364,6 @@ git --version
 
 - If the following commands run without error as the `opc` user then you are ready to proceed to Lab 100.
 
-   ![](images/050Linux/41.png)
+   ![](images/050Linux/41.PNG)
 
 **This completes the Set Up!**
