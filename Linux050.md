@@ -33,8 +33,8 @@ In this lab we will obtain an Oracle Cloud Trial Account, create ssh key pairs, 
 ## Objectives
 
 - Obtain an Oracle Cloud Trial Account
-- Create a SSH key pair
 - Create the baseline infrastructure to support a Compute instance
+- Create a SSH key pair
 - SSH into the instance: Install Docker and GIT
 
 
@@ -151,7 +151,7 @@ All the availability domains in a region are connected to each other by a low la
 
 A security list provides a virtual firewall for an instance, with ingress and egress rules that specify the types of traffic allowed in and out. Each security list is enforced at the instance level. However, you configure your security lists at the subnet level, which means that all instances in a given subnet are subject to the same set of rules. The security lists apply to a given instance whether it's talking with another instance in the VCN or a host outside the VCN.
 
-- Click on the **DeickerVCN** and then **Security Lists**
+- Click on the **DockerVCN** and then **Security Lists**
 
     ![](images/050Linux/16.png)
 
@@ -202,138 +202,168 @@ Destination Port Range: 8085
 
     ![](images/050Linux/23.png)
 
-### **STEP 6**: Create SSH Key Pair (Linux client)
+### **STEP 6**: Create SSH Key Pair (Linux or Mac client)
 
 Before we create the Compute instance that will contian Docker and application depoyments we need to create an ssh key pair so we'll be able to securly connect to the instance and do the Docker installation, etc.
 
-**NOTE:** `This step focuses on key pair generation for Linux based terminal sessions. If your going to run your terminal sessions from a Windows client then skip to STEP 7`
+**NOTE:** `This step focuses on key pair generation for Linux or Mac based terminal sessions. If your going to run your terminal sessions from a Windows client then skip to STEP 7`
 
-- In the terminal window **Type** the following
+- In a `Linux/Mac` client terminal window **Type** the following (You don't have to worry about any passphrases unless you want to enter one)
+
+```
+ssh-keygen -b 2048 -t rsa -f dockerkey
+```
+
+- Your key pair is now in the current directory
+
+    ![](images/050Linux/24.png)
+
+### **STEP 7**: Create SSH Key Pair (Windows client)
+
+For Windows clients this example will show the use of PuttyGen to generate the keypair. [Putty and PuttyGen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) are available for download.
+
+- Run **PuttyGen** and click **Generate**
+
+    ![](images/050Linux/25.png)
+
+- **Save private key** to a directory of your choice.
+
+**NOTE:** `Do not save the public key as the format is not compatable with Linux openSSH.
+
+- Instead, **Select the entire Public Key in the display and right-click copy**. `This content will be pasted into the Create Instance dialog in Step 8.`
+
+    ![](images/050Linux/25-2.png)
+
+- **NOTE for Linux and Mac Clients:** Just open up the pubic key file in an editor (vi) and select / copy the entire contents to be used in Step 8.   
+
+    ![](images/050Linux/25-4.png)
+
+### **STEP 8**: Create a Compute Instance
+
+You will now create a Linux based Compute instance using the public key you just generated.
+
+- Go back to your OCI console and from the hamburger menu in the upper left hand corner select **Compute-->Instances**
+
+    ![](images/050Linux/26.png)
+
+-Click **Create Instance**
+
+   ![](images/050Linux/27.png)
+
+- **Select or Type** the following in the `Instance` section of the dialog:
+
+```
+Name: Docker
+Availability Domain: xxx-AD-1
+Boot Volume: Oracle-Provided OS Image
+Image Operating System: Oracle Linux 7.5
+Shape Type: Virtual Machine
+Shape: VM.Standard1.1
+SSH Keys: Choose SSH Key Files
+```
+
+- You will Browse and select your PUBLIC SSH Key
+**NOTE:** You will paste the public key you copied in Step 7 into the SSH KEY field by selecting the "Paste SSH Keys" radio button. `The public key should all be on ONE LINE` 
+
+   ![](images/050Linux/28.png)
+
+- In the Network Section **Select** the following:
+
+```
+Virtual Cloud Network: DockerVCN
+```
+
+   ![](images/050Linux/29.png)
+
+- Click **Create Instance**
+
+After a few minutes you should see a running instance with a Public IP Address.
+
+- `Make a note of the IP Address as we will be using this in the next step.`
+
+   ![](images/050Linux/30.png)
 
 
+### **STEP 8**: SSH into the Instance and install Docker
 
+The last set up piece will be to SSH into the Compute image and install Docker.
+
+- For a Windows client session bring up Putty, select the **Session** section and type in the IP address:
+
+   ![](images/050Linux/31.png)
+
+- Select the **Data** section and enter the following as the username:
+
+```
+opc
+```
+
+   ![](images/050Linux/32.png)
+
+- Select **SSH-->Auth** and browse to the Private Key you created back in Step 7:
+
+   ![](images/050Linux/33.png) 
+
+- Click the **Open** button. You will presented the first time with am alert message. Click **Yes**
+
+   ![](images/050Linux/35.png)
+
+- You will logged into the Compute image:
+
+   ![](images/050Linux/36.png)
+
+- **NOTE:** For Linux and Mac client sessions "cd" into the directory where your key pair is. Make sure the dockerkey file has the permissions of "600" (chmod 600 dockerkey) and ssh into the compute instance `substituting your IP address`.
+
+Example:
+
+```
+cd <directory of your key pair>
+chmod 600 dockerkey
+ssh -i ./dockerkey opc@129.213.119.105
+```
+
+   ![](images/050Linux/37.png)
+
+### **STEP 9**: Install and configure Docker and GIT
+
+Docker and GIT are required for the subsuquent labs. You will install the Docker engine, enable it to start on re-boot, grant docker privledges to the `opc` user and finally install GIT.
 
 - **Type** the following:
 
 ```
-docker ps
+sudo -s
+yum install docker-engine
+usermod -aG docker opc
+systemctl enable docker
+systemctl start docker
 ```
+- Screenshot at the end of the Docker installation:
 
-![](images/050Linux/Picture100-3.png)
+   ![](images/050Linux/38.png)
 
-### **STEP 4**: Run the restclient docker image from docker hub
-
-We will now download and create a container based on an existing docker image stored in the Docker Hub. It uses a JSON formatted datafile to serve the test data via its exposed REST service. Docker looks for the designated image locally first before going to Docker HUB.
-
-- Let's take a look at what the docker **run** command options do:
-    - "-d" flag runs the container in the background
-    - "-it" flags instructs Docker to allocate a pseudo-TTY connected to the
-    container’s stdin, creating an interactive bash capable shell in the container (which we will use in a moment when we connect into the container)
-    - "--rm" When this container is stopped all resources associated with it (storage, etc) will be deleted
-    - "--name" The name of the container will be "restclient"
-    - "-p" Port 8002 is mapped from the container to port 8002 on the HOST
-    - "-e" Environment variables used by the application. "DS" setting designates the JSON datasource.
-
-- **Type OR cut and paste** the following (all on one line):
-
-``` 
-docker run -d -it --rm --name restclient -p=8002:8002 -e DS='json' wvbirder/restclient
-```
-
-![](images/050Linux/Picture100-4.png)
-
-### **STEP 5**: Check running containers
-
-Again using the `docker ps` command, we should see our newly spawned docker container
+   ![](images/050Linux/39.png)
 
 - **Type** the following:
 
 ```
-docker ps
+yum install git
 ```
 
-- Note that the container id is unique, and the container's port is mapped to 8002, which is the same as the Host's port.
+- Screenshot at the end of the GIT installation:
 
-![](images/050Linux/Picture100-5.png)
-
-### **STEP 6**: Check the Application with a browser
-
-- Navigate in a browser to:
-
-```
-http://localhost:8002/
-```
-
-![](images/050Linux/Picture100-6.png)
-
-- Now enter this URL into your browser :  `http://localhost:8002/products`
-
-![](images/050Linux/Picture100-7.png)
-
-### **STEP 7**: Stop the Container
-
-- Since we started the `restclient` container with the --rm option upon stopping it docker will remove ALL allocated resources
+   ![](images/050Linux/40.png)
 
 - **Type** the following:
 
 ```
-docker stop restclient
+su - opc
+docker version
+docker images
+git --version
 ```
 
-- Now, entering "docker ps -a" (which will show the status of ALL containers RUNNING or STOPPED) shows nothing proving the container was deleted upon stopping it.
+- If the following commands run without error as the `opc` user then you are ready to proceed to Lab 100.
 
-- **Type** the following:
+   ![](images/050Linux/41.png)
 
-```
-docker ps -a
-```
-
-![](images/050Linux/Picture100-7.4.png)
-
-### **STEP 8**: Start another Container with a different HOST Port
-
-- Start another container using the Host's 18002 port:
-
-- **Type** the following:
-
-```
-docker run -d -it --rm --name restclient -p=18002:8002 -e DS='json' wvbirder/restclient
-```
-
-- If you change your browsers port to 18002, you will see that the Host server is using 18002 and mapping that to our container's port 8002.
-
-![](images/050Linux/Picture100-8.png)
-
-![](images/050Linux/Picture100-9.png)
-
-### **STEP 9**: Inspect the Container's Network and IP Address
-
-- You can get various bits of information of the subnet that docker container is running on by inspecting the default network bridge docker creates out-of-the-box. You can create your own networks and assign containers to them but that is out of the scope of this lab. 
-
- - **Type** the following:
-
-```
-docker network inspect bridge
-```
-
-- This returns information about all the containers running on the default bridge. We see that our `restclient` container is assigned IP Address 172.17.0.1. You can ping that address from the Host server.
-
-![](images/050Linux/Picture100-10.png)
-
-- Ping the `restclient` container IP Address: (in this example the IP was 172.17.0.2)
-
-- **Type** the following:
-
-```
-ping 172.17.0.2
-```
-
-![](images/050Linux/Picture100-11.png)
-
-- Finally, **STOP** the `restclient` container as we will be re-using it in Lab 200 by **typing**:
-
-```
-docker stop restclient
-```
-
-**This completes the Lab!**
+**This completes the Set Up!**
