@@ -1,5 +1,5 @@
 ![](images/200Linux/Title200.png)  
-Updated: January 6, 2018
+Updated: June 22, 2018
 
 ## Introduction
 
@@ -28,8 +28,7 @@ You will use various Docker commands to setup, run and connect into containers. 
 ## Required Artifacts
 
 - Docker Hub Account: [Docker Hub](https://hub.docker.com/)
-- Docker and GIT installed in your own environment
-    - OR, you can use an available Linux based VirtualBox image
+- Docker and GIT installed
 
 # Start up and login into your Linux environment
 
@@ -41,9 +40,7 @@ If you chose to use your own Linux setup then login and verify that the Docker e
 
 ### **STEP 1**: Open up a Terminal Window
 
-- Right-click and open up a terminal session.
-
-![](images/200Linux/Picture200-1.png)
+- Make sure you are in a SSH terminal session (`Assumes login via Lab 050`). **You can follow Step 8 in Lab 050 to re-login if you need to...**
 
 ### **STEP 2**: Verify that Docker is running
 
@@ -84,6 +81,8 @@ chmod -R 777 Alpha*
 ### **STEP 5**: Login using your Docker Hub credentials
 
 - When prompted enter your username/password. Example shown here:
+
+**NOTE:** If you haven't yet created a Docker Hub account, now is the time to do it: [Docker Hub](https://hub.docker.com/)
 
 - **Type** the following:
 
