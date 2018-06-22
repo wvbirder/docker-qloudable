@@ -472,13 +472,13 @@ If you configured both ORACLE and MYSQL databases then you can stop the `restcli
 - **Type** OR cut and paste:
 
 ```
-docker run -d --name=alphaofficeui -p=8085:8085 wvbirder/alpha-office-catalog-ui
+docker run -d --name=alphaofficeui -p=8085:8085 wvbirder/alpha-office-ui-js
 ```
 
 - After it is running test the completed application deployment by going to the browser, and opening a new tab:
 
 ```
-http://localhost:8085
+http://<Public-IP>:8085
 ```
 
 - You should see something like:
@@ -490,6 +490,8 @@ http://localhost:8085
 ![](images/200Linux/Picture200-27.png)
 
 # Make changes to the AlphaOffice application
+
+**NOTE:** `For those of you who came to this Workshop via the Oracle Jump Start this section does some, but not all, of the same modifications you did in the Jump Start.`
 
 In this section you will make a couple of changes to the AlphaOfficeUI application. One will correct a typo and another will change the background image. The flow for this will be as follows:
 
@@ -505,17 +507,17 @@ In this section you will make a couple of changes to the AlphaOfficeUI applicati
 
 ### **STEP 1**: Copy a New Background Image
 
-Copy a background image file into the running AlphaOfficeUI container. This file is in your YOUR_HOME/AlphaOfficeSetup directory that you GIT cloned at the beginning of the lab
+Copy a background image file into the running AlphaOfficeUI container. This file is in the <YOUR_HOME>/AlphaOfficeSetup directory that you GIT cloned at the beginning of the lab
 
-- **Type** (substituting **\<YOUR-HOME>**)
+- **Type** (substituting **\/home/opc**)
 
 ```
-docker cp /<YOUR_HOME>/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
+docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
 ```
 
-  Example: docker cp /home/holuser/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
+  Example: docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
 
-### **STEP 2**: Install the VIM editor in the container
+### **STEP 2**: Install the VIM editor in the UI container
 
 Even though the orginal AlphaOfficeUI image could have been set up ahead of time with any needed client tools we're adding the the environment on-the-fly to give you some idea that it can be done
 
@@ -557,7 +559,7 @@ ls /pipeline/source/public/Images
 vim /pipeline/source/public/alpha.html
 ```
 
-- Move the cursor to the text you wish to edit and press the letter __i__ to make changes. Fix the header title to read "**Alpha Office Product Listing**". You can also change the body title to whatever you want:
+- Move the cursor to the text you wish to edit and press the letter __i__ to make changes. Fix the header title to read "**Alpha Office Product Catalog**". You can also change the body title to whatever you want:
 
 ![](images/200Linux/Picture200-29.png)
 
@@ -589,7 +591,7 @@ exit
 
 ### **STEP 1**: Commit a NEW Docker image
 
-In this step you will save a copy of your modifed docker container and give it a new name. You're back out in the HOST now. Substitute your docker hub account name where asked for in the following commands:
+In this step you will save a copy of your modifed docker container and give it a new name. You're back out in the HOST now. Substitute your docker hub account name and give the new image a name where asked for in the following commands:
 
 - **Type** in following:
 
@@ -611,15 +613,22 @@ docker images
 
 ### **STEP 2**: Start a container based on your new image
 
-Since there is already a running `alphaofficeui` container we'll name the new container `alphaofficeui2` and use port 8086 on the HOST since 8085 is in use. We will also use the PORT enviroment variable.
+We will now stop and remove the old version of AlphaOfficeUI and fire off a new container based on your changes.
 
 - **Type** the following:
 
 ```
-docker run -d --name=alphaofficeui2 -p=8086:8086 -e PORT=8086 (your-dockerhub-account)/(image-name)
+docker stop alphaofficeui
+docker rm alphaofficeui
 ```
 
-- Example: `docker run -d --name=alphaofficeui2 -p=8086:8086 -e PORT=8086 wvbirder/alphaoffice-new`
+- Start a new container using your new Docker image. **Cut and Paste OR Type**: (Substituting your DockerHub account name and the image name you created in Step 1)
+
+```
+docker run -d --name=alphaofficeui -p=8085:8085 (your-dockerhub-account)/(image-name)
+```
+
+- Example: `docker run -d --name=alphaofficeui -p=8085:8085  wvbirder/alphaoffice-new`
 
 - Verify the new container is running by **typing**:
 
@@ -632,7 +641,7 @@ docker ps
 - Open up a new browser tab and **enter**:
 
 ```
-http://localhost:8086
+http://<Public-IP>:8085
 ```
 
 ![](images/200Linux/Picture200-33.png)
