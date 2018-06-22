@@ -401,9 +401,9 @@ docker ps
 
 ![](images/200Linux/Picture200-21.png)
 
-- Go to the browser, open up a new tab and **enter**: `http://localhost:9080/statictweets`
+- Go to the browser, open up a new tab and **enter**: `http://<Public-IP>:9080/statictweets`
 
-**NOTE:** The firefox browser included in the Linux VirtualBox VM has a built-in JSON formatter. If you don't have a JSON formatter add-on you'll see a stream of text representing the tweets.
+**NOTE:** If you don't have a JSON formatter add-on you'll see a stream of text representing the tweets.
 
 ![](images/200Linux/Picture200-22.png)
 
@@ -445,7 +445,7 @@ docker run -d -it --rm --name restclient -p=8002:8002 --link orcl:oracledb-ao -e
 Go to the browser, open up a new tab and **enter**: 
 
 ```
-http://localhost:8002/products
+http://<Public-IP>:8002/products
 ```
 
 - A list of ALL products are shown:
@@ -455,7 +455,7 @@ http://localhost:8002/products
 - You can also query an individual product. In the browser, open up a new tab and **enter**:
 
 ```
-http://localhost:8002/product/1025
+http://<Public-IP>:8002/product/1025
 ```
 
 - **NOTE:** In the URL that "**product**" is singular.
