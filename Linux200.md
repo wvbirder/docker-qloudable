@@ -261,6 +261,8 @@ Check the "as SYSDBA" checkbox
 
 ### **STEP 1**: Create the database container
 
+**NOTE: Make sure to sure to use a 5.x version of MYSQL**
+
 This docker command will create a container based on the latest MYSQL database image file located in Docker Hub
 
 - Let's take a look at what the docker **run** command options do:
