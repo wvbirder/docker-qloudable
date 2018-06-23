@@ -61,19 +61,19 @@ Inside the Jump Start interface you will `Launch the Demo Lab`
 
 - **In 6 minutes the Oracle IaaS infrastructure including the Application already running and deployed will be available.**
 
-![](images/000JumpStart/JS4.png)
+  ![](images/000JumpStart/JS4.png)
 
 - While you're waiting, check out the short video that gives an overview of this session if you have already done so:
 
-![](images/000JumpStart/JS5.png)
+  ![](images/000JumpStart/JS5.png)
 
 - When the environment is ready you will see the following along with the connect string to put into VNC Viewer. (In this example 129.213.56.126:1. Your IP address will be different)
 
-![](images/000JumpStart/JS6.png)
+  ![](images/000JumpStart/JS6.png)
 
 - **You have 30 minutes** before the environment will go away.
 
-![](images/000JumpStart/JS7.png)
+  ![](images/000JumpStart/JS7.png)
 
 ## Log into your Account
 
@@ -81,22 +81,45 @@ Using VNC Viewer connect to the newly provisioned account.
 
 ### **STEP 1**: Start VNC Viewer
 
-- Enter the connect string you were given:
+- Enter the connect string you were given (Example Shown):
 
-Example:
-
-![](images/000JumpStart/JS8.png)
+  ![](images/000JumpStart/JS8.png)
 
 - If presented with this prompt, just click **Continue**
 
-![](images/000JumpStart/JS9.png)
+  ![](images/000JumpStart/JS9.png)
 
 - Enter the VNC password  **Qloudable** 
 
-![](images/000JumpStart/JS10.png)
+  ![](images/000JumpStart/JS10.png)
 
 - You should now see your Desktop:
 
+  ![](images/000JumpStart/JS11.png)
+
+ ### **STEP 2**: Start VNC Viewer
+
+ Check the AlphaOffice Application
+
+- Click on the **Applications** tab and select **Firefox Web Browser**
+
+  ![](images/000JumpStart/JS12.png)
+
+- **Type** the URL **localhost:8085**
+
+  ![](images/000JumpStart/JS13.png)
+
+- The Application is displayed. **NOTE:** There is a typo in the tab. You will fix this in a few minutes...
+
+  ![](images/000JumpStart/JS14.png)
+
+- Click on the **Crayola Markers** product to see associated Twitter feeds.
+
+  ![](images/000JumpStart/JS15.png)
+
+- Minimize the browser. We will come back to that later.
 
 
- 
+
+
+
