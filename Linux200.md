@@ -546,7 +546,9 @@ apt-get update
 apt-get install vim
 ```
 
-- Say **Y** at the "Do you want to continue?" prompt.
+- **NOTE: If may see output that says it's already the newest version**
+
+- If applicable, say **Y** at the "Do you want to continue?" prompt.
 
 - Verify the "**dark_blue.jpg**" file is in the container by **typing**:
 
@@ -558,7 +560,7 @@ ls /pipeline/source/public/Images
 
 ### **STEP 3**: Edit the alpha.html file   
 
-- Edit the "alpha.html" file to fix a typo - Note, if you are unfamiliar with `vim`, you'll find information at this URL: [VIM](http://vimsheet.com). The commands are very similar to vi:
+- Edit the `alpha.html` file to fix a typo - Note, if you are unfamiliar with `vim`, you'll find information at this URL: [VIM](http://vimsheet.com). The commands are very similar to vi:
 
 ```
 vim /pipeline/source/public/alpha.html
