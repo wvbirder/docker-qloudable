@@ -11,7 +11,7 @@ With a comprehensive offering that includes compute, storage, network, bare meta
 
 This introduction provisions a Docker multi-container application running in the Compute Cloud Service on a VM Standard footprint. There are many options to choose from in Oracle's IaaS arena.
 
-![](images/000JumpStart/JS0-2.png)
+![](images/000JumpStart/JS0-2.PNG)
 
 ## Docker Overview
 
@@ -25,7 +25,7 @@ Containers have been around for many years. Docker created a technology that was
 
 ### VM vs Container
 
-![](images/000JumpStart/JS1.png)
+![](images/000JumpStart/JS1.PNG)
 
 While containers may sound like a virtual machine (VM), the two are distinct technologies. With VMs each virtual machine includes the application, the necessary binaries and libraries and the entire guest operating system.
 
@@ -39,8 +39,9 @@ In this lab you will be looking at the various application components deployed i
 
 The AlphaOffice UI container retrieves catalog information from a REST service (written in Node.js) running in a separate container. It also takes in sample Twitter feed data from a REST service (written in Java), also running in its own container, and combines the data into a unified front end.
 
-![](images/000JumpStart/JS2.png)
-![](images/000JumpStart/JS0-4.png)
+![](images/000JumpStart/JS2.PNG)
+
+![](images/000JumpStart/JS0-4.PNG)
 
 ## Objectives
 
@@ -57,23 +58,23 @@ The AlphaOffice UI container retrieves catalog information from a REST service (
 
 Inside the Jump Start interface you will `Launch the Demo Lab`
 
-![](images/000JumpStart/JS3.png)
+![](images/000JumpStart/JS3.PNG)
 
 - **In 6 minutes the Oracle IaaS infrastructure including the Application already running and deployed will be available.**
 
-  ![](images/000JumpStart/JS4.png)
+  ![](images/000JumpStart/JS4.PNG)
 
 - While you're waiting, check out the short video that gives an overview of this session if you have already done so:
 
-  ![](images/000JumpStart/JS5.png)
+  ![](images/000JumpStart/JS5.PNG)
 
 - When the environment is ready you will see the following along with the connect string to put into VNC Viewer. (In this example 129.213.56.126:1. Your IP address will be different)
 
-  ![](images/000JumpStart/JS6.png)
+  ![](images/000JumpStart/JS6.PNG)
 
 - **You have 30 minutes** before the environment will go away.
 
-  ![](images/000JumpStart/JS7.png)
+  ![](images/000JumpStart/JS7.PNG)
 
 ## Log into your Account
 
@@ -83,19 +84,19 @@ Using VNC Viewer connect to the newly provisioned account.
 
 - Enter the connect string you were given (Example Shown):
 
-  ![](images/000JumpStart/JS8.png)
+  ![](images/000JumpStart/JS8.PNG)
 
 - If presented with this prompt, just click **Continue**
 
-  ![](images/000JumpStart/JS9.png)
+  ![](images/000JumpStart/JS9.PNG)
 
 - Enter the VNC password  **Qloudable** 
 
-  ![](images/000JumpStart/JS10.png)
+  ![](images/000JumpStart/JS10.PNG)
 
 - You should now see your Desktop:
 
-  ![](images/000JumpStart/JS11.png)
+  ![](images/000JumpStart/JS11.PNG)
 
  ### **STEP 2**: AlphaOffice Application
 
@@ -103,19 +104,19 @@ Using VNC Viewer connect to the newly provisioned account.
 
 - Click on the **Applications** tab and select **Firefox Web Browser**
 
-  ![](images/000JumpStart/JS12.png)
+  ![](images/000JumpStart/JS12.PNG)
 
 - **Type** the URL **localhost:8085**
 
-  ![](images/000JumpStart/JS13.png)
+  ![](images/000JumpStart/JS13.PNG)
 
 - The Application is displayed. **NOTE:** There is a typo in the tab. You will fix this in a few minutes...
 
-  ![](images/000JumpStart/JS14.png)
+  ![](images/000JumpStart/JS14.PNG)
 
 - Click on the **Crayola Markers** product to see associated Twitter feeds.
 
-  ![](images/000JumpStart/JS15.png)
+  ![](images/000JumpStart/JS15.PNG)
 
 - Minimize the browser. We will come back to that later.
 
@@ -129,7 +130,7 @@ Open a terminal session and look into the set up
 
 - On the desktop **right-click** and select **Open Terminal**
 
-    ![](images/000JumpStart/JS16.png)
+    ![](images/000JumpStart/JS16.PNG)
 
 - **Type** the following:
 
@@ -140,7 +141,7 @@ docker version
 
 This takes us into the "opc" user and shows the current Docker version (`18.03`)
 
-![](images/000JumpStart/JS17.png)
+![](images/000JumpStart/JS17.PNG)
 
 - **Type** the following to see what Docker containers are running:
 
@@ -148,7 +149,7 @@ This takes us into the "opc" user and shows the current Docker version (`18.03`)
 docker ps
 ```
 
-  ![](images/000JumpStart/JS18.png)
+  ![](images/000JumpStart/JS18.PNG)
 
 The output shows three containers running named:
 ```
@@ -166,7 +167,7 @@ Docker uses a default network called `bridge` and assigns virtual IP addresses t
 docker network ls
 ```
 
-  ![](images/000JumpStart/JS19.png)
+  ![](images/000JumpStart/JS19.PNG)
 
 - `docker inspect` will show us all details of a particular container. Storage locations, storage volumes, storage types, networking subnet and IP address and much more. We will run the following to get information on the `restclient` container. **Type** the following:
 
@@ -176,15 +177,15 @@ docker inspect restclient
 
 Scroll through the JSON output. We will touch on a couple of sections:
 
-  ![](images/000JumpStart/JS20.png)
+  ![](images/000JumpStart/JS20.PNG)
 
 The output above shows the Creation Date, if the container is running, The process ID (`2351`) on the HOST operating system, the path location on the HOST where inforamtion is stored (`/var/lib/docker/...`), the type of storage Overlay that Docker is using on the HOST opearating system (`overlay2`)
 
-  ![](images/000JumpStart/JS21.png)
+  ![](images/000JumpStart/JS21.PNG)
 
 The output above shows the arbitrarily assigned hostname (You can give the container a hostname on startup if you want), and the HOST exposed network ports (`8002`)
 
-  ![](images/000JumpStart/JS22.png)  
+  ![](images/000JumpStart/JS22.PNG)  
 
 The output above shows networking specifics for the container. The Docker virtual network that it's on (`bridge`), the ports the container is using (`8002`) and the assigned IP address (`172.17.0.4`)
 
@@ -195,7 +196,7 @@ The output above shows networking specifics for the container. The Docker virtua
  ```
 Example output (your IP assignments may vary):
 
-  ![](images/000JumpStart/JS23.png)  
+  ![](images/000JumpStart/JS23.PNG)  
 
 # Make changes to the AlphaOffice application
 
@@ -366,6 +367,6 @@ If you would like to experience a more in-depth look at how this Docker infrastr
 
 - **NOTE:** When the Jump Start allotted time has expired (30 minutes) you will see the following:
 
-  ![](images/000Jumpstart/JS99.png)
+  ![](images/000Jumpstart/JS99.PNG)
 
 **This completes the Jump Start**
