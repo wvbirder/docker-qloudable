@@ -37,7 +37,6 @@ In this lab we will obtain an Oracle Cloud Trial Account, create ssh key pairs, 
 - Create a SSH key pair
 - SSH into the instance: Install Docker and GIT
 
-
 ## Required Artifacts
 
 - If running from Windows: [Putty and PuttyGen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
@@ -382,14 +381,16 @@ git --version
 
 ### **STEP 10**: Edit /etc/sysconfig/selinux
 
-To ensure that permissive mode survives re-boots please edit /etc/sysconfig/selinux
+To ensure that permissive mode survives re-boots please edit `/etc/sysconfig/selinux`
 
-- Using vi change the SELINUX line to **permissive**. **Type** the following:
+- Using vi, change the SELINUX line to **permissive**. **Type** the following:
 
 ```
 vi /etc/sysconfig/selinux
 ```
 
    ![](images/050Linux/42.png)
+
+- Save the file and exit out of vi
 
 **This completes the Set Up!**
