@@ -364,4 +364,8 @@ http://localhost:8085
 
 If you would like to experience a more in-depth look at how this Docker infrastructure was created in the Oracle Cloud and how the AlphaOffice application can be deployed using an Oracle database OR MYSQL as the RESTclient datasource please go to <link-here>
 
+- **NOTE:** When the Jump Start allotted time has expired (30 minutes) you will see the following:
+
+  ![](images/000Jumpstart/JS99.png)
+
 **This completes the Jump Start**
