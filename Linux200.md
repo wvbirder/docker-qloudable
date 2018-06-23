@@ -520,7 +520,7 @@ Copy a background image file into the running AlphaOfficeUI container. This file
 docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
 ```
 
-  Example: docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
+  Example: `docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images`
 
 ### **STEP 2**: Install the VIM editor in the UI container
 

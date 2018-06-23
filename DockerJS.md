@@ -1,5 +1,5 @@
 
-# Docker Workshop
+# Introduction to Docker on the Oracle Cloud
 
 ![](images/000JumpStart/TitleJS.png) 
 
@@ -222,7 +222,7 @@ Copy a background image file into the running AlphaOfficeUI container. This file
 docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
 ```
 
-  Example: docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
+  Example: `docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images`
 
 ### **STEP 2**: Install the VIM editor in the UI container
 
@@ -299,15 +299,15 @@ Commit and Test the changes
 
 ### **STEP 1**: Commit a NEW Docker image
 
-In this step you will save a copy of your modifed docker container and give it a new name. You're back out in the HOST now. Substitute your docker hub account name and give the new image a name where asked for in the following commands:
+In this step you will save a copy of your modifed docker container and give it a new name. You're back out in the HOST now. You can assign whatever image-name you want.
 
 - **Type** in following:
 
 ```
-docker commit alphaofficeui (your-dockerhub-account)/(image-name)
+docker commit alphaofficeui jumpstart/(image-name)
 ```
   
-- Example: `docker commit alphaofficeui wvbirder/alphaoffice-new`
+- Example: `docker commit alphaofficeui jumpstart/alphaoffice-new`
 
 - **Type** the following:
 
@@ -330,13 +330,19 @@ docker stop alphaofficeui
 docker rm alphaofficeui
 ```
 
-- Start a new container using your new Docker image. **Cut and Paste OR Type**: (Substituting your DockerHub account name and the image name you created in Step 1)
+- Start a new container using your new Docker image. **Cut and Paste OR Type**:
+
+- Let's take a look at what the docker **run** command options do:
+    - "-d" flag runs the container in the background
+    - "--restart unless-stopped" If the container goes down unexpectedly then when docker comes back up it will be restated... UNLESS it is stopped manually
+    - "--name" The name of the container will be "alphaofficeui"
+    - "-p" Port 8085 is mapped from the container to the same port on the HOST
 
 ```
-docker run -d --name=alphaofficeui -p=8085:8085 (your-dockerhub-account)/(image-name)
+docker run -d --restart unless-stopped --name=alphaofficeui -p=8085:8085 jumpstart/(image-name)
 ```
 
-- Example: `docker run -d --name=alphaofficeui -p=8085:8085  wvbirder/alphaoffice-new`
+- Example: `docker run -d --restart unless-stopped --name=alphaofficeui -p=8085:8085  jumpstart/alphaoffice-new`
 
 - Verify the new container is running by **typing**:
 
@@ -346,10 +352,16 @@ docker ps
 
 ![](images/000JumpStart/Picture200-32.png)
 
-- Open up a new browser tab and **enter**:
+- If your browser is still minimized then maximize it and refreash the AlphaOffice tab. If it's closed, then restart Firefox frm the Applications tab and go to:
 
 ```
-http://<Public-IP>:8085
+http://localhost:8085
 ```
 
 ![](images/000Jumpstart/Picture200-33.png)
+
+# Where do I go from here?
+
+If you would like to experience a more in-depth look at how this Docker infrastructure was created in the Oracle Cloud and how the AlphaOffice application can be deployed using an Oracle database OR MYSQL as the RESTclient datasource please go to <link-here>
+
+**This completes the Jump Start**
