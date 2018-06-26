@@ -56,9 +56,9 @@ The AlphaOffice UI container retrieves catalog information from a REST service (
 
 # Start the Demo Lab
 
-Inside the Jump Start interface you will `Launch the Demo Lab`
+-  **Launch the Demo Lab**
 
-![](images/000JumpStart/JS3.PNG)
+   ![](images/000JumpStart/JS3.PNG)
 
 - **In 6 minutes the Oracle IaaS infrastructure including the Application already running and deployed will be available.**
 
