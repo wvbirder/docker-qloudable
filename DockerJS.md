@@ -322,7 +322,7 @@ docker images
 
 ### **STEP 2**: Start a container based on your new image
 
-We will now stop and remove the old version of AlphaOfficeUI and fire off a new container based on your changes.
+**Stop** and **remove** the currently running AlphaOfficeUI container. Then, start a new container based on your changes.
 
 - **Type** the following:
 
