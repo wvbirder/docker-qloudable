@@ -120,13 +120,13 @@ Using VNC Viewer connect into the newly provisioned account.
 
 - **Minimize the browser**. We will come back to it later.
 
-## Explore your Docker environment
+## Explore the Docker environment
 
-You will run some Docker commands to explore details of the installation and the deployment of the AlphaOffice containers
+You will run some Docker commands to explore details of the installation and the AlphaOffice containers
 
 ### **STEP 1**: Run some Docker Commands
 
-Open a terminal session and look into the set up
+Open a terminal session
 
 - On the desktop **right-click** and select **Open Terminal**
 
@@ -139,7 +139,7 @@ su - opc
 docker version
 ```
 
-This takes us into the "opc" user and shows the current Docker version (`18.03`)
+This takes us into the `opc` user and shows the current Docker version (`18.03`)
 
 ![](images/000JumpStart/JS17.PNG)
 
