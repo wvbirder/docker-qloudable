@@ -122,7 +122,7 @@ Using VNC Viewer connect into the newly provisioned account.
 
 ## Explore the Docker environment
 
-You will run some Docker commands to explore details of the installation and the AlphaOffice containers
+Run some Docker commands to explore details of the installation and the AlphaOffice containers
 
 ### **STEP 1**: Run some Docker Commands
 
