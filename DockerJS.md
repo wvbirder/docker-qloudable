@@ -217,7 +217,7 @@ Copy a background image file into the running AlphaOfficeUI container. This file
 
 **NOTE:** Make sure you are still logged in as the `opc` user
 
-- **Type** the following:
+- **Type or Cut and Paste** the following:
 
 ```
 docker cp /home/opc/AlphaOfficeSetup/dark_blue.jpg alphaofficeui:/pipeline/source/public/Images
