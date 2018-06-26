@@ -1,5 +1,5 @@
 
-# Docker Workshop
+# Docker Workshop - Trial Account Set Up
 
 ![](images/050Linux/Title050.png) 
 
