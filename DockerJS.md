@@ -331,7 +331,7 @@ docker stop alphaofficeui
 docker rm alphaofficeui
 ```
 
-- Start a new container using your new Docker image. **Cut and Paste OR Type**:
+- Start a container using your new Docker image. **Cut and Paste OR Type**:
 
 - Let's take a look at what the docker **run** command options do:
     - "-d" flag runs the container in the background
