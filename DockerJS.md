@@ -64,7 +64,7 @@ The AlphaOffice UI container retrieves catalog information from a REST service (
 
   ![](images/000JumpStart/JS4.PNG)
 
-- While you're waiting, check out the short video that gives an overview of this session if you have already done so:
+- While you're waiting, check out the short video that gives an overview of this session if you have not already done so:
 
   ![](images/000JumpStart/JS5.PNG)
 
@@ -78,7 +78,7 @@ The AlphaOffice UI container retrieves catalog information from a REST service (
 
 ## Log into your Account
 
-Using VNC Viewer connect to the newly provisioned account.
+Using VNC Viewer connect into the newly provisioned account.
 
 ### **STEP 1**: Start VNC Viewer
 
@@ -100,17 +100,17 @@ Using VNC Viewer connect to the newly provisioned account.
 
  ### **STEP 2**: AlphaOffice Application
 
- Check the AlphaOffice Application
+ Run the AlphaOffice Application
 
 - Click on the **Applications** tab and select **Firefox Web Browser**
 
   ![](images/000JumpStart/JS12.PNG)
 
-- **Type** the URL **localhost:8085**
+- **Type** in the URL: **localhost:8085**
 
   ![](images/000JumpStart/JS13.PNG)
 
-- The Application is displayed. **NOTE:** There is a typo in the tab. You will fix this in a few minutes...
+- The Application is displayed. **NOTE:** There is a typo in the tab (Aplha). You will fix this in a few minutes...
 
   ![](images/000JumpStart/JS14.PNG)
 
@@ -118,11 +118,11 @@ Using VNC Viewer connect to the newly provisioned account.
 
   ![](images/000JumpStart/JS15.PNG)
 
-- Minimize the browser. We will come back to that later.
+- **Minimize the browser**. We will come back to it later.
 
 ## Explore your Docker environment
 
-You will run some Docker commands to see details of the installation and the deployment of the AlphaOffice containers
+You will run some Docker commands to explore details of the installation and the deployment of the AlphaOffice containers
 
 ### **STEP 1**: Run some Docker Commands
 
