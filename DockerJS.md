@@ -248,7 +248,7 @@ apt-get update
 ```
 apt-get install vim
 ```
-- **NOTE: If may see output that says it's already the newest version**
+- **NOTE: If may see output that says it's already at the newest version**
 
 - If applicable, say **Y** at the "Do you want to continue?" prompt.
 
@@ -268,7 +268,7 @@ ls /pipeline/source/public/Images
 vim /pipeline/source/public/alpha.html
 ```
 
-- Move the cursor to the text you wish to edit and press the letter __i__ to make changes. Fix the header title to read "**Alpha Office Product Catalog**". You can also change the body title to whatever you want:
+- Fix the header title to read "**Alpha Office Product Catalog**". You can also change the body title to whatever you want:
 
 ![](images/000JumpStart/Picture200-29.png)
 
