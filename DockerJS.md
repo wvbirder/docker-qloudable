@@ -293,12 +293,12 @@ Commit and Test the changes
 
 ### **STEP 1**: Commit a NEW Docker image
 
-In this step you will save a copy of your modifed docker container and give it a new name. (**NOTE:** You're back out in the HOST now). You can assign whatever image-name you want.
+In this step you will save a copy of your modifed docker container and give it a new name. (**NOTE:** You're back out in the HOST now). You can assign whatever <`image-name`> you want.
 
 - **Type** in following:
 
 ```
-docker commit alphaofficeui jumpstart/(image-name)
+docker commit alphaofficeui jumpstart/<image-name>
 ```
   
 - Example: `docker commit alphaofficeui jumpstart/alphaoffice-new`
