@@ -215,7 +215,7 @@ In this section you will make a couple of changes to the AlphaOfficeUI applicati
 
 Copy a background image file into the running AlphaOfficeUI container. This file is in the `/home/opc/AlphaOfficeSetup` directory.
 
-**NOTE:** Make sure you are still logged in as the `opc` user
+**NOTE:** Make sure you are still logged in as the `opc` user. You can check by typing `whoami`. If you are the root user for some reason then Type `su - opc` to login as the opc user.
 
 - **Type or Cut and Paste** the following:
 
