@@ -282,7 +282,7 @@ vim /pipeline/source/public/alpha.html
 vim /pipeline/source/public/css/alpha.css
 ```
 
-- Change the background image reference to "**dark_blue.jpg**"
+- Change the background image reference to **dark_blue.jpg**
 
 ![](images/000JumpStart/Picture200-30.png)
 
