@@ -335,7 +335,7 @@ Start a container using your new Docker image.
 - **Cut and Paste OR Type** the following:
 
 ```
-docker run -d --restart unless-stopped --name=alphaofficeui -p=8085:8085 jumpstart/(image-name)
+docker run -d --restart unless-stopped --name=alphaofficeui -p=8085:8085 jumpstart/<image-name>
 ```
 
 - Example: `docker run -d --restart unless-stopped --name=alphaofficeui -p=8085:8085  jumpstart/alphaoffice-new`
