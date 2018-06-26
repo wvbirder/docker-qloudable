@@ -316,7 +316,7 @@ docker commit alphaofficeui jumpstart/(image-name)
 docker images
 ```
 
- - See the new saved image:
+ - The new image is available:
 
 ![](images/000JumpStart/Picture200-31.png)
 
