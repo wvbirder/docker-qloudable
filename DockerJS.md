@@ -213,7 +213,7 @@ In this section you will make a couple of changes to the AlphaOfficeUI applicati
 
 ### **STEP 1**: Copy a New Background Image
 
-Copy a background image file into the running AlphaOfficeUI container. This file is in the <YOUR_HOME>/AlphaOfficeSetup directory that you GIT cloned at the beginning of the lab
+Copy a background image file into the running AlphaOfficeUI container. This file is in the `/home/opc/AlphaOfficeSetup` directory.
 
 **NOTE:** Make sure you are still logged in as the `opc` user
 
