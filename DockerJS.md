@@ -169,7 +169,7 @@ docker network ls
 
   ![](images/000JumpStart/JS19.PNG)
 
-- `docker inspect` will show us all details of a particular container. Storage locations, storage volumes, storage types, networking subnet, IP address and much more. We will run the following to get information on the `restclient` container. **Type** the following:
+- `docker inspect` will show us all details of a particular container. Storage locations, storage volumes, storage types, networking subnet, IP address and much more. To get information on the `restclient` container, for example, **Type** the following:
 
 ```
 docker inspect restclient
