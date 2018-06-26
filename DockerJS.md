@@ -175,11 +175,11 @@ docker network ls
 docker inspect restclient
 ```
 
-Scroll through the JSON output. We will touch on a couple of sections:
+Scroll back through the JSON output. We will touch on a couple of sections:
 
   ![](images/000JumpStart/JS20.PNG)
 
-The output above shows the Creation Date, container status, The process ID (`2351`) on the HOST operating system, the path location on the HOST where information is stored (`/var/lib/docker/...`), the type of storage overlay that Docker is using on the HOST opearating system (In this case, `overlay2`)
+The output above shows the Creation Date, container status, The process ID (`2351`) on the HOST operating system, the path location on the HOST where container specific information is stored (`/var/lib/docker/...`), the type of storage overlay that Docker is using on the HOST opearating system (In this case, `overlay2`)
 
   ![](images/000JumpStart/JS21.PNG)
 
