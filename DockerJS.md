@@ -183,7 +183,7 @@ The output above shows the Creation Date, container status, The process ID (`235
 
   ![](images/000JumpStart/JS21.PNG)
 
-The output above shows the arbitrarily assigned hostname (You can give the container a hostname on startup if you want), and the HOST exposed network ports (`8002`)
+The output above shows the arbitrarily assigned hostname (You can give the container a hostname on startup if you want), and the HOST exposed network port (`8002`)
 
   ![](images/000JumpStart/JS22.PNG)  
 
@@ -243,14 +243,7 @@ apt-get update
 
 ![](images/000JumpStart/Picture200-28.png)
 
-- **Type** the following:
 
-```
-apt-get install vim
-```
-- **NOTE: If may see output that says it's already at the newest version**
-
-- If applicable, say **Y** at the "Do you want to continue?" prompt.
 
 - Verify the "**dark_blue.jpg**" file is in the container by **typing**:
 
