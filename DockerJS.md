@@ -331,13 +331,15 @@ docker stop alphaofficeui
 docker rm alphaofficeui
 ```
 
-- Start a container using your new Docker image. **Cut and Paste OR Type**:
+Start a container using your new Docker image.
 
 - Let's take a look at what the docker **run** command options do:
     - "-d" flag runs the container in the background
-    - "--restart unless-stopped" If the container goes down unexpectedly then when docker comes back up it will be restated... UNLESS it is stopped manually
+    - "--restart unless-stopped" Restarts the container if it goes down unexpectedly... UNLESS it is stopped manually
     - "--name" The name of the container will be "alphaofficeui"
     - "-p" Port 8085 is mapped from the container to the same port on the HOST
+
+- **Cut and Paste OR Type** the following:
 
 ```
 docker run -d --restart unless-stopped --name=alphaofficeui -p=8085:8085 jumpstart/(image-name)
