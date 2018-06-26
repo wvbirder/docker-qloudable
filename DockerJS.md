@@ -355,7 +355,7 @@ docker ps
 
 ![](images/000JumpStart/Picture200-32.png)
 
-- If your browser is still minimized then maximize it and refresh the AlphaOffice tab. If it's closed, then restart Firefox from the Applications tab and go to:
+- If your browser is still minimized then maximize it and refresh the AlphaOffice tab. If it's closed, then restart Firefox from the Desktop `Applications` tab and go to:
 
 ```
 http://localhost:8085
