@@ -35,7 +35,7 @@ Whereas, Containers include the application, all of its dependencies, but share 
 
 In this lab you will be looking at various application components deployed in three Docker containers. The AlphaOffice application offers a list of products from a catalog. Refering to the `Product Catalog Application` section of the diagram below we see four Docker containers. 
 
-**NOTE:** In this lab deployment the "database" product catalog is bundled with the REST service. The product listing is provided via JSON. In the full blown deployment available as a follow-up lab Lab, you would use an Oracle or MYSQL database as the datasource.
+**NOTE:** In this lab deployment the "database" product catalog is bundled with the REST service. The product listing is provided via JSON. In the full blown deployment available as a follow-up lab, you use an Oracle or MYSQL database as the datasource.
 
 The AlphaOffice UI container retrieves catalog information from a REST service (written in Node.js) running in a separate container. It also takes in sample Twitter feed data from a REST service (written in Java), also running in its own container, and combines the data into a unified front end.
 
