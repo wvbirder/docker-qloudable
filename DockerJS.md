@@ -179,7 +179,7 @@ Scroll through the JSON output. We will touch on a couple of sections:
 
   ![](images/000JumpStart/JS20.PNG)
 
-The output above shows the Creation Date, if the container is running, The process ID (`2351`) on the HOST operating system, the path location on the HOST where inforamtion is stored (`/var/lib/docker/...`), the type of storage Overlay that Docker is using on the HOST opearating system (`overlay2`)
+The output above shows the Creation Date, container status, The process ID (`2351`) on the HOST operating system, the path location on the HOST where information is stored (`/var/lib/docker/...`), the type of storage overlay that Docker is using on the HOST opearating system (In this case, `overlay2`)
 
   ![](images/000JumpStart/JS21.PNG)
 
@@ -189,7 +189,7 @@ The output above shows the arbitrarily assigned hostname (You can give the conta
 
 The output above shows networking specifics for the container. The Docker virtual network that it's on (`bridge`), the ports the container is using (`8002`) and the assigned IP address (`172.17.0.4`)
 
- - **Cut and Paste** the following to get a list of all IP addresses of the current containers:
+ - **Cut and Paste** the following to get a list of all IP addresses from the current running containers:
 
  ```
  docker ps -q | xargs -n 1 docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Name }}' | sed 's/ \// /'
