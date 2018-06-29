@@ -193,7 +193,7 @@ You'll see a Node.js application `server.js` running:
 
 ![](images/000JumpStart/JS20-2.PNG)
 
-- Now, go into the `restclient` container and see what is running there. **Type** the following sequsence ( 1) bash into the container, 2) ps -ef, 3) exit out of the container)
+- Now, go into the `restclient` container and see what is running there. **Type** the following sequence; 1) `bash` into the container, 2) `ps -ef`, 3) `exit` out of the container
 
 ```
 docker exec -it restcleint bash
