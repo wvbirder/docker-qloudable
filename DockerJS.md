@@ -181,6 +181,31 @@ Scroll back through the JSON output. We will touch on a couple of sections:
 
 The output above shows the Creation Date, container status, The process ID (`2351`) on the HOST operating system, the path location on the HOST where container specific information is stored (`/var/lib/docker/...`), the type of storage overlay that Docker is using on the HOST opearating system (In this case, `overlay2`)
 
+- Take the PID (Process ID) of the `restclient` container and see what is running on the HOST (In this example the process ID is 2390. Substitute your <PID> in its place).
+
+- **Type** the following:
+
+```
+docker ps -ef | grep <PID>
+```
+
+You'll see a Node.js application `server.js` running:
+
+![](images/000JumpStart/JS20-2.PNG)
+
+- Now, go into the `restclient` container and see what is running there. **Type** the following sequsence ( 1) bash into the container, 2) ps -ef, 3) exit out of the container)
+
+```
+docker exec -it restcleint bash
+ps -ef
+exit
+```
+You'll notice the same application running...
+
+![](images/000JumpStart/JS20-4.PNG)
+
+Now, looking further at the `restclient` inspection output:
+
   ![](images/000JumpStart/JS21.PNG)
 
 The output above shows the arbitrarily assigned hostname (You can give the container a hostname on startup if you want), and the HOST exposed network port (`8002`)
@@ -294,6 +319,7 @@ Commit and Test the changes
 ### **STEP 1**: Commit a NEW Docker image
 
 In this step you will save a copy of your modifed docker container and give it a new name. (**NOTE:** You're back out in the HOST now). You can assign whatever <`image-name`> you want.
+**NOTE:** \<image-name> must be in lower case.
 
 - **Type** in following:
 
